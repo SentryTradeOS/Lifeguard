@@ -36,8 +36,22 @@ Platform: Linux (Debian/Ubuntu), Windows 10/11/Server 2022+
 Messaging: Telegram Bot API
 
 💖 Sponsorship & Support
-This project is personally developed and maintained by me. If you find that this tool has helped you avoid significant trading risks or provided value to your automated trading setup, please consider supporting my continuous optimization efforts through:
+This project is personally developed and maintained by me. If you find that this tool has helped you avoid significant trading risks or provided value to your automated trading setup, please consider supporting my continuous optimisation efforts through:
 
 GitHub Sponsors: Click the Sponsor button at the top of the page (Recommended).
 
 Coffee: https://buymeacoffee.com/ccmeng
+
+Your sponsorship will be used for:
+
+Maintaining multiple off-site VPS environments for testing.
+
+Developing a more intuitive Web monitoring dashboard.
+
+Continuously optimising the robustness of the Linux arbitration algorithm.
+
+📝 Disclaimer
+This project is provided solely as a system stability aid and does not guarantee any trading profits. Forex trading involves high risk; please deploy this tool only after conducting thorough testing.
+
+💡 Message to Developers
+If you are interested in distributed systems, C# AOT optimisation, or forex automated trading, feel free to submit an Issue or Pull Request!
