@@ -23,7 +23,16 @@ Port 5001: Ensures the Windows execution nodes are online.
 
 Built-in Health Check Endpoints: Natively supports text/plain health check endpoints, perfectly adapting to third-party monitoring software like Uptime Kuma. Simply configure the keyword "Healthy" to attain enterprise-grade visual monitoring safeguards.
 
-<img width="665" height="189" alt="image" src="https://github.com/user-attachments/assets/e8581032-53b0-44c9-8e58-e4854058e155" />
+The visualization details the relationships and responsibilities within the 1A+2N Cluster:
+
+[Linux] Arbiter-ha (The Brain): Centrally manages epoch data, lease issuance, and master declarations to prevent "Split-Brain" scenarios.
+
+[Windows] NodeClients (The Workers): Shows the two nodes (x2) executing negotiation and directly controlling the MT4 AutoTrading switches.
+
+[Windows] Watchdog (The Guard): Monitors heartbeats from both NodeClients and their associated MT4/EAs, with defined actions to trigger restarts and send alerts via the Telegram Bot API.
+
+<img width="2816" height="1536" alt="HA Map" src="https://github.com/user-attachments/assets/1718974d-d16e-49a8-840e-35baa7e8867d" />
+
 
 
 🛠️ Tech Stack
