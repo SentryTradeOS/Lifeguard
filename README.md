@@ -1,0 +1,43 @@
+🚀 MT4-Lifeguard H/A: Enterprise-Grade High Availability Solution
+
+The ultimate solution to empower your MT4 with "Auto-Recovery" and "Distributed Split-Brain Prevention" capabilities.
+
+MT4-Lifeguard H/A is a High Availability (HA) framework designed specifically for professional forex traders. Through a 1 Arbiter + 2 Node Clients (1A+2N) architecture, it resolves MT4 crashes, VPS disconnections, and the most fatal issue of all: "Split-Brain" (duplicate orders).
+
+✨ Core Highlights
+🛡️ 1A+2N Distributed Arbitration: Introduces an Arbiter mechanism. During network fluctuations, the Arbiter determines the singular Master node, 100% eliminating the tragedy of simultaneous order execution across dual machines.
+
+🔌 Universal EA Compatibility: No EA code modifications required. By toggling the MT4 AutoTrading switch at the system level, it perfectly supports all closed-source EAs purchased from the MQL5 Market.
+
+⚡ Win32 Low-Level Synchronization: Utilizes local Win32Event core synchronization for microsecond-level detection of EA survivability, with near-zero resource consumption.
+
+🐧 Cross-Platform Deployment: Supports Linux for the Arbiter (lightweight and stable) and Windows for the trading nodes (highest compatibility), forging the most robust hybrid cloud architecture.
+
+🧠 Epoch Persistence: Features Epoch incrementation and state persistence, enabling instant recovery of the arbitration logic even after a system reboot.
+
+🛡️ Dual Health Checks: Fully supports Uptime Kuma endpoint monitoring.
+
+Port 5000: Ensures the Linux Arbiter service is online.
+
+Port 5001: Ensures the Windows execution nodes are online.
+
+Built-in Health Check Endpoints: Natively supports text/plain health check endpoints, perfectly adapting to third-party monitoring software like Uptime Kuma. Simply configure the keyword "Healthy" to attain enterprise-grade visual monitoring safeguards.
+
+<img width="665" height="189" alt="image" src="https://github.com/user-attachments/assets/e8581032-53b0-44c9-8e58-e4854058e155" />
+
+
+🛠️ Tech Stack
+Language: C# (.NET 10.0)
+
+Protocol: TCP (Cross-node) / Win32 API (Local IPC)
+
+Platform: Linux (Debian/Ubuntu), Windows 10/11/Server 2022+
+
+Messaging: Telegram Bot API
+
+💖 Sponsorship & Support
+This project is personally developed and maintained by me. If you find that this tool has helped you avoid significant trading risks or provided value to your automated trading setup, please consider supporting my continuous optimization efforts through:
+
+GitHub Sponsors: Click the Sponsor button at the top of the page (Recommended).
+
+Coffee: https://buymeacoffee.com/ccmeng
