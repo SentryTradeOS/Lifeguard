@@ -54,4 +54,4 @@ Continuously optimising the robustness of the Linux arbitration algorithm.
 This project is provided solely as a system stability aid and does not guarantee any trading profits. Forex trading involves high risk; please deploy this tool only after conducting thorough testing.
 
 💡 Message to Developers
-If you are interested in distributed systems, C# optimisation, or forex automated trading, feel free to submit an Issue or Pull Request!
+If you are interested in distributed systems, C# optimisation, or forex automated trading control, feel free to submit an Issue or Pull Request!
