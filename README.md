@@ -1,6 +1,6 @@
 🛡️ Lifeguard
 
-Lifeguard is an ultra-lightweight, high-performance monitoring system and infrastructure monitoring tool specifically engineered for MT4 (MetaTrader 4) environments and automated trading systems.
+Lifeguard is an ultra-lightweight, high-performance, and infrastructure-monitoring tool specifically engineered for MT4 (MetaTrader 4) environments and automated trading systems.
 
 Compiled with .NET Native AOT (Ahead-Of-Time), it operates with a virtually non-existent memory footprint, making it the perfect choice for high-availability VPS environments where every megabyte counts.
 
