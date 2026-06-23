@@ -99,9 +99,18 @@ The log engine automatically trims files exceeding 10MB and retains archives up 
 
 If Lifeguard has saved your trade environment or helped secure your automated infrastructure, consider supporting its development!
 
-You can sponsor this project via the Sponsor button on the right, or buy us a coffee directly via PayPal:
-
+You can sponsor this project via the Sponsor button on the right, or buy us a coffee directly via:
 👉 Support SentryTradeOS on https://buymeacoffee.com/ccmeng
+
+Your sponsorship will be used for:
+
+Maintaining multiple off-site VPS environments for testing.
+
+Developing a more intuitive Web monitoring dashboard.
+
+📝 Disclaimer: This project is provided solely as a system stability aid and does not guarantee any trading profits. Forex trading involves high risk; please deploy this tool only after conducting thorough testing.
+
+💡 Message to Developers: If you are interested in distributed systems, C# optimisation, or forex automated trading control, feel free to submit an Issue or Pull Request!
 
 📄 License
 
