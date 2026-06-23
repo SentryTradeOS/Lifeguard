@@ -1,66 +1,148 @@
-🚀 MT4-Lifeguard H/A: Enterprise-Grade High Availability Solution
+🛡️ Lifeguard
 
-The solution to empower MT4 with "Auto-Recovery" and "Distributed Split-Brain Prevention" capabilities.
+Lifeguard is an ultra-lightweight, high-performance watchdog and infrastructure monitoring tool specifically engineered for MT4 (MetaTrader 4) environments and automated trading systems.
 
-MT4-Lifeguard H/A is a High Availability (HA) framework designed specifically for professional forex traders. Through a 1 Arbiter + 2 Node Clients (1A+2N) architecture, it resolves MT4 crashes, VPS disconnections, and the most fatal issue of all: "Split-Brain" (duplicate orders).
+Compiled with .NET Native AOT (Ahead-Of-Time), it operates with a virtually non-existent memory footprint, making it the perfect choice for high-availability VPS environments where every megabyte counts.
 
-✨ Core Highlights
-🛡️ 1A+2N Distributed Arbitration: Introduces an Arbiter mechanism. During network fluctuations, the Arbiter determines the singular Master node, 100% eliminating the tragedy of simultaneous order execution across dual machines.
+✨ Key Features
 
-🔌 Universal EA Compatibility: No EA code modifications required. By toggling the MT4 AutoTrading switch at the system level, it perfectly supports all closed-source EAs purchased from the MQL5 Market.
+🚀 Native AOT Performance
 
-⚡ Win32 Low-Level Synchronization: Utilizes local Win32Event core synchronization for microsecond-level detection of EA survivability, with near-zero resource consumption.
+Fully compiled to native machine code.
 
-🐧 Cross-Platform Deployment: Supports Linux for the Arbiter (lightweight and stable) and Windows for the trading nodes (highest compatibility), forging the most robust hybrid cloud architecture.
+No .NET runtime required on the target VPS.
 
-🧠 Epoch Persistence: Features Epoch incrementation and state persistence, enabling instant recovery of the arbitration logic even after a system reboot.
+Extremely low memory consumption (~4.5MB).
 
-🛡️ Dual Health Checks: Fully supports Uptime Kuma endpoint monitoring.
+🛡️ Global Single-Instance Protection
 
-Port 5000: Ensures the Linux Arbiter service is online.
+Utilizes a machine-level OS Mutex (Global\LifeguardSystem_SingleInstance_Mutex).
 
-Port 5001: Ensures the Windows execution nodes are online.
+Prevents duplicate instances from running across different Windows user sessions, Remote Desktop (RDP) connections, or background services.
 
-Built-in Health Check Endpoints: Natively supports text/plain health check endpoints, perfectly adapting to third-party monitoring software like Uptime Kuma. Simply configure the keyword "Healthy" to attain enterprise-grade visual monitoring safeguards.
+Ensures zero-conflict monitoring and prevents duplicated alert dispatches.
 
-The visualization details the relationships and responsibilities within the 1A+2N Cluster:
+📉 MT4 Smart Recovery & Heartbeat Guard
 
-[Linux] Arbiter-ha (The Brain): Centrally manages epoch data, lease issuance, and master declarations to prevent "Split-Brain" scenarios.
+Monitors the responsiveness and execution status of MT4 processes.
 
-[Windows] NodeClients (The Workers): Shows the two nodes (x2) executing negotiation and directly controlling the MT4 AutoTrading switches.
+Detects deadlocks, freezes, and crashes, triggering clean, automated recovery processes.
 
-[Windows] Watchdog (The Guard): Monitors heartbeats from both NodeClients and their associated MT4/EAs, with defined actions to trigger restarts and send alerts via the Telegram Bot API.
+📡 Ecosystem Sync (HaNodeClient)
 
-<img width="2816" height="1536" alt="HA Map" src="https://github.com/user-attachments/assets/1718974d-d16e-49a8-840e-35baa7e8867d" />
+Seamlessly monitors node-client health states.
+
+Pre-configured to work hand-in-hand with the upcoming HaNodeClient for failover high-availability configurations.
+
+💬 Instant Telegram Alerts
+
+Immediate dispatch of warnings and critical crash events directly to your Telegram channel.
+
+Periodic "All Clear" heartbeat status updates.
+
+🪵 Production-Grade Logging
+
+Backed by Serilog with automated 10MB daily rolling limits and 30-day log-retention policies.
+
+🗺️ System Architecture
+
++-----------------------------------------------------------+
+|                        Windows VPS                        |
+|                                                           |
+|  +--------------------+             +------------------+  |
+|  |    MT4 Terminal    | <=========> | LifeguardEmitter |  |
+|  |  (Trading Charts)  |  IPC Event  |    (MQL4 EA)     |  |
+|  +--------------------+             +------------------+  |
+|            |                                 |            |
+|            | Process Status                  | Pulse      |
+|            v                                 v            |
+|  +-----------------------------------------------------+  |
+|  |                     LIFEGUARD                       |  |
+|  |                 (Core Watchdog)                     |  |
+|  +-----------------------------------------------------+  |
+|            |                                 |            |
+|            | JSON Alert                      | Sync       |
+|            v                                 v            |
+|    +---------------+                 +---------------+    |
+|    | Telegram Bot  |                 |  HaNodeClient |    |
+|    +---------------+                 +---------------+    |
++-----------------------------------------------------------+
 
 
+📦 Quick Start
 
-🛠️ Tech Stack
-Language: C# (.NET 10.0)
+1. Prerequisites
 
-Protocol: TCP (Cross-node) / Win32 API (Local IPC)
+OS: Windows Server 2012+ or Windows 10/11 (64-bit).
 
-Platform: Linux (Debian/Ubuntu), Windows 10/11/Server 2022+
+Dependencies: None! Thanks to Native AOT, no .NET runtimes or SDKs are required.
 
-Messaging: Telegram Bot API
+2. Installation
 
-💖 Sponsorship & Support
-This project is personally developed and maintained by me. If you find that this tool has helped you avoid significant trading risks or provided value to your automated trading setup, please consider supporting my continuous optimisation efforts through:
+Go to the Releases page.
 
-GitHub Sponsors: Click the Sponsor button at the top of the page (Recommended).
+Download the latest Lifeguard_Core_v1.1.0_win-x64.zip.
 
-Coffee: https://buymeacoffee.com/ccmeng
+Extract the contents to your preferred folder on your VPS (e.g., C:\TradeSentry\Lifeguard).
 
-Your sponsorship will be used for:
+3. Configuration
 
-Maintaining multiple off-site VPS environments for testing.
+Rename config_example.json to config.json and customize your settings:
 
-Developing a more intuitive Web monitoring dashboard.
+{
+  "Telegram": {
+    "BotToken": "YOUR_TELEGRAM_BOT_TOKEN",
+    "ChatId": "YOUR_TELEGRAM_CHAT_ID",
+    "Enabled": true
+  },
+  "Monitoring": {
+    "IntervalSeconds": 5,
+    "ReportIntervalMinutes": 60,
+    "TargetProcesses": [
+      "terminal"
+    ]
+  },
+  "HaNodeClient": {
+    "Endpoint": "[http://127.0.0.1:8080/status](http://127.0.0.1:8080/status)",
+    "Enabled": false
+  }
+}
 
-Continuously optimising the robustness of the Linux arbitration algorithm.
 
-📝 Disclaimer
-This project is provided solely as a system stability aid and does not guarantee any trading profits. Forex trading involves high risk; please deploy this tool only after conducting thorough testing.
+4. Running the Watchdog
 
-💡 Message to Developers
-If you are interested in distributed systems, C# optimisation, or forex automated trading control, feel free to submit an Issue or Pull Request!
+Double-click Lifeguard.exe or run it via Command Prompt:
+
+Lifeguard.exe
+
+
+⚙️ How Single-Instance Protection Works
+
+To prevent conflicting API requests, resource lockups, and dual-alerting, Lifeguard enforces a strict single-instance constraint:
+
+First Instance: Obtains the global OS mutex and begins background polling.
+
+Subsequent Instances: * Detect that the mutex is already held.
+
+Log a warning inside the terminal: [WARNING] The Lifeguard system is already running in the background!
+
+Safely auto-terminate after a 3-second visual countdown to let the operator see the status.
+
+🪵 Log Management
+
+Logs are generated in the ./Logs folder using the following format:
+Logs/Lifeguard_Log_YYYYMMDD.txt
+
+The log engine automatically trims files exceeding 10MB and retains archives up to 30 days to prevent your VPS disk from running out of space.
+
+💖 Support & Sponsorship
+
+If Lifeguard has saved your trade environment or helped secure your automated infrastructure, consider supporting its development!
+
+You can sponsor this project via the Sponsor button on the right, or buy us a coffee directly via PayPal:
+
+👉 Support SentryTradeOS on https://buymeacoffee.com/ccmeng
+
+📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
