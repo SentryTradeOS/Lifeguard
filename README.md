@@ -12,7 +12,7 @@ Fully compiled to native machine code.
 
 No .NET runtime required on the target VPS.
 
-Extremely low memory consumption (~4.5MB).
+Extremely low memory consumption (~15MB).
 
 🛡️ Global Single-Instance Protection
 
