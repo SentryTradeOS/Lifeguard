@@ -16,7 +16,7 @@ Extremely low memory consumption (~4.5MB).
 
 🛡️ Global Single-Instance Protection
 
-Utilizes a machine-level OS Mutex (Global\LifeguardSystem_SingleInstance_Mutex).
+Utilises a machine-level OS Mutex (Global\LifeguardSystem_SingleInstance_Mutex).
 
 Prevents duplicate instances from running across different Windows user sessions, Remote Desktop (RDP) connections, or background services.
 
@@ -45,28 +45,8 @@ Periodic "All Clear" heartbeat status updates.
 Backed by Serilog with automated 10MB daily rolling limits and 30-day log-retention policies.
 
 🗺️ System Architecture
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/4d185d20-3b8b-4fef-9c72-a91282309665" />
 
-+-----------------------------------------------------------+
-|                        Windows VPS                        |
-|                                                           |
-|  +--------------------+             +------------------+  |
-|  |    MT4 Terminal    | <=========> | LifeguardEmitter |  |
-|  |  (Trading Charts)  |  IPC Event  |    (MQL4 EA)     |  |
-|  +--------------------+             +------------------+  |
-|            |                                 |            |
-|            | Process Status                  | Pulse      |
-|            v                                 v            |
-|  +-----------------------------------------------------+  |
-|  |                     LIFEGUARD                       |  |
-|  |                 (Core Watchdog)                     |  |
-|  +-----------------------------------------------------+  |
-|            |                                 |            |
-|            | JSON Alert                      | Sync       |
-|            v                                 v            |
-|    +---------------+                 +---------------+    |
-|    | Telegram Bot  |                 |  HaNodeClient |    |
-|    +---------------+                 +---------------+    |
-+-----------------------------------------------------------+
 
 
 📦 Quick Start
@@ -87,29 +67,9 @@ Extract the contents to your preferred folder on your VPS (e.g., C:\TradeSentry\
 
 3. Configuration
 
-Rename config_example.json to config.json and customize your settings:
+Rename config_example.json to config.json and customise your settings.
 
-{
-  "Telegram": {
-    "BotToken": "YOUR_TELEGRAM_BOT_TOKEN",
-    "ChatId": "YOUR_TELEGRAM_CHAT_ID",
-    "Enabled": true
-  },
-  "Monitoring": {
-    "IntervalSeconds": 5,
-    "ReportIntervalMinutes": 60,
-    "TargetProcesses": [
-      "terminal"
-    ]
-  },
-  "HaNodeClient": {
-    "Endpoint": "[http://127.0.0.1:8080/status](http://127.0.0.1:8080/status)",
-    "Enabled": false
-  }
-}
-
-
-4. Running the Watchdog
+4. Running the Lifeguard
 
 Double-click Lifeguard.exe or run it via Command Prompt:
 
