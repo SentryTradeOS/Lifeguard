@@ -61,15 +61,19 @@ Dependencies: None! Thanks to Native AOT, no .NET runtimes or SDKs are required.
 
 Go to the Releases page.
 
-Download the latest Lifeguard.1.0.1.AOT.x64.zip.
+Download the latest Lifeguard.1.0.1.AOT.x64.zip and LifeguardEmitter.Ea.1.0.0.zip
 
 Extract the contents to your preferred folder on your VPS (e.g., C:\TradeSentry\Lifeguard).
 
 3. Configuration
 
-Open config.json and customise your settings.
+Follow the instructions in EaCompanionUserManual.pdf and LifeguardSystemUserManual.pdf
 
-4. Running the Lifeguard
+4. Activate the EA Heartbeat
+
+Make sure the Lifeguard_Emitter is attached to the MT4.
+
+5. Running the Lifeguard
 
 Double-click Lifeguard.exe or run it via Command Prompt:
 
