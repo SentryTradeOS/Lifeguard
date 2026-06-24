@@ -70,6 +70,12 @@ Extract the contents to your preferred folder on your VPS (e.g., C:\TradeSentry\
 Follow the instructions in EaCompanionUserManual.pdf and LifeguardSystemUserManual.pdf
 > 💡 **Highly Recommended:** We strongly advise against editing the JSON file manually. To prevent fatal syntax errors and ensure your parameters are within safe limits, please use our official GUI tool: 
 > 👉 **[Lifeguard Configurator](https://github.com/SentryTradeOS/ConfigTool)**
+<div align="center">
+  <a href="https://github.com/SentryTradeOS/ConfigTool">
+<img width="802" height="482" alt="image" src="https://github.com/user-attachments/assets/a15654ad-4e2c-44f7-9adf-11a56ed83a7d" />
+</a>
+</div>
+
 
 4. Activate the EA Heartbeat
 
