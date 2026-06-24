@@ -61,7 +61,7 @@ Dependencies: None! Thanks to Native AOT, no .NET runtimes or SDKs are required.
 
 Go to the Releases page.
 
-Download the latest Lifeguard_Core_v1.0.1.AOT.x64.zip.
+Download the latest Lifeguard.1.0.1.AOT.x64.zip.
 
 Extract the contents to your preferred folder on your VPS (e.g., C:\TradeSentry\Lifeguard).
 
