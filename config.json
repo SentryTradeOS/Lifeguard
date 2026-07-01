@@ -1,0 +1,19 @@
+{
+  "NodeId": "WinNode-A",
+  "TelegramBotToken": "1234567890:AKSFJLSJFDDF654SD65464_DS6F4ASF54A",
+  "TelegramChatId": "1234567890",
+  "MT4Instances": {
+    "MT4_01": "D:\\MT4\\MT4_Elev8\\terminal.exe",
+    "MT4_02": "D:\\MT4\\MT4_Tickmill\\terminal.exe",
+    "MT4_03": "D:\\MT4\\MT4_XMGlobal\\terminal.exe"
+  },
+  "TimeoutMilliseconds": 10000,
+  "InitialDelayMs": 30000,
+  "MaxRetries": 3,
+  "RestartCooldownMs": 15000,
+  "AlertReminderIntervalMs": 3600000,
+  "HaNodeClient": {
+    "ExePath": "D:\\Users\\user\\source\\repos\\HaNodeClient\\bin\\Debug\\net10.0\\HaNodeClient.exe",
+    "HeartbeatTimeoutMs": 15000
+  }
+}
